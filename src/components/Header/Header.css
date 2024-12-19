@@ -1,0 +1,18 @@
+.Header {
+    background-color: var(--second-bg-color);
+    display: flex;
+    align-items: center;
+}
+
+.Header__list {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    justify-content: right;
+}
+
+.Header__link:hover,
+.Header__link:active {
+    color: var(--accent-color);
+    transition: all 0.1s linear;
+}

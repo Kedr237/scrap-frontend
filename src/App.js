@@ -1,23 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Home from "./pages/Home/Home";
+import SignInUp from "./pages/SignInUp/SignInUp";
 import "./App.css";
-import Header from "./blocks/Header/Header";
-import Notes from "./blocks/Notes/Notes";
-import Note from "./blocks/Note/Note";
-import Footer from "./blocks/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <Router>
+      <div className="App">
+        <Header />
+        <main className="main">
 
-      <main className="main">
-        <Notes />
-        <div className="container">
-          <Note />
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="auth" element={<SignInUp />} />
+          </Routes>
+          
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

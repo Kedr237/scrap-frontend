@@ -3,7 +3,9 @@ import "./Note.css";
 function Note() {
     return (
         <div className="Note">
-            This is Note
+            <div className="container">
+                This is Note
+            </div>
         </div>
     );
 }
