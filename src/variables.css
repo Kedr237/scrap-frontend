@@ -5,4 +5,9 @@
 
     --main-text-color: #deebff;
     --accent-color: #ff3939;
+
+    --screen-size-desktop: 1200px;
+    --screen-size-laptop: 992px;
+    --screen-size-tablet: 768px;
+    --screen-size-phone: 576px;
 }
