@@ -1,0 +1,7 @@
+.Notes {
+    width: 20rem;
+    height: 100%;
+
+    background: var(--third-bg-color);
+    padding: 1rem;
+}
