@@ -1,0 +1,94 @@
+.Auth__form {
+    --gap: 1.5rem;
+    margin: 2rem 0;
+    display: grid;
+    gap: var(--gap);
+}
+
+
+.Auth__input-block {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.Auth__input-block label {
+    --height: 1.5rem;
+    line-height: var(--height);
+}
+
+.Auth__input-block input {
+    --height: 1.5rem;
+    height: var(--height);
+    padding: 0 1rem;
+    border-radius: calc(var(--height) / 2);
+    background: var(--third-bg-color);
+
+}
+
+.Auth__input-block input:hover,
+.Auth__input-block input:focus,
+.Auth__input-block input:active {
+    outline: 1px solid var(--accent-color);
+    transition: outline 0.1s linear;
+}
+
+.Auth__input-block input:-webkit-autofill,
+.Auth__input-block input:-webkit-autofill:hover, 
+.Auth__input-block input:-webkit-autofill:focus, 
+.Auth__input-block input:-webkit-autofill:active {
+    background-clip: content-box!important;
+    -webkit-text-fill-color: var(--main-text-color);
+    -webkit-box-shadow: 0 0 0 1000px var(--third-bg-color) inset;
+}
+
+
+.Auth__submit-btn {
+    --height: 2rem;
+    height: var(--height);
+    margin: 0rem auto;
+    padding: 0 1rem;
+    display: block;
+    background: var(--third-bg-color);
+    border: 1px solid var(--accent-color);
+    border-radius: calc(var(--height) / 2);
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.Auth__submit-btn:hover,
+.Auth__submit-btn:active {
+    color: var(--accent-color);
+    background: var(--second-bg-color);
+}
+
+
+.Auth__error-messages {
+    margin-top: calc(var(--gap) / 2);
+    margin-left: 1rem;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gap) / 4);
+    list-style-type: disc;
+}
+
+.Auth_error-message {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    opacity: 0.8;
+
+}
+
+
+.Auth__success-message {
+    color: var(--second-accent-color);
+    text-align: center;
+    overflow: hidden;
+    height: 1.2rem;
+    transition: all 0.5s linear;
+}
+
+.Auth__success-message.fade-out {
+    opacity: 0;
+    height: 0;
+}

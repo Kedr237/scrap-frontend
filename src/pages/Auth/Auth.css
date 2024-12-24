@@ -4,22 +4,22 @@
 }
 
 .Auth .container {
-    max-width: 576px;
+    max-width: var(--screen-size-phone);
+    margin-top: 2rem;
 }
 
-.Auth__list {
+.Auth__options {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.Auth__list li {
+.Auth__options li {
     cursor: pointer;
 }
 
-.Auth__signIn {
-
-}
-
-.Auth__signUp {
-
+.Auth__options li:hover,
+.Auth__options li:active {
+    color: var(--accent-color);
+    transition: all 0.2s linear;
 }

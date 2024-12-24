@@ -47,3 +47,11 @@ table {
 a {
 	text-decoration: none;
 }
+
+input,
+input:hover,
+input:focus {
+	background: none;
+	border: none;
+	outline: none;
+}
