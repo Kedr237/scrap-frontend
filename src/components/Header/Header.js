@@ -9,7 +9,10 @@ function Header() {
                         <a href="/" className="Header__link">Notes</a>
                     </li>
                     <li>
-                        <a href="auth" className="Header__link">Auth</a>
+                        <a href="auth" className="Header__link border-parent">
+                            Auth
+                            <div className="border-child"></div>
+                        </a>
                     </li>
                 </ul>
             </div>

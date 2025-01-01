@@ -2,7 +2,6 @@
     width: 100%;
     height: 100%;
 }
-
 .Auth .container {
     max-width: var(--screen-size-phone);
     margin-top: 2rem;
@@ -13,11 +12,9 @@
     justify-content: center;
     gap: 2rem;
 }
-
 .Auth__options li {
     cursor: pointer;
 }
-
 .Auth__options li:hover,
 .Auth__options li:active {
     color: var(--accent-color);
