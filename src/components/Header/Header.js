@@ -1,3 +1,5 @@
+import Counter from "../../Counter";
+
 import "./Header.css";
 
 function Header() {
@@ -5,6 +7,7 @@ function Header() {
         <header className="Header">
             <div className="container">
                 <ul className="Header__list">
+                    <Counter />
                     <li>
                         <a href="/" className="Header__link">Notes</a>
                     </li>

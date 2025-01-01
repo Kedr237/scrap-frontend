@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import FormSignIn from "./forms/FormSignIn";
 import FormSignUp from "./forms/FormSignUp";
+
 import "./Auth.css";
 
 function Auth() {

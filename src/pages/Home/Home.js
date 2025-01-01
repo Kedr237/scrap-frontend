@@ -1,5 +1,6 @@
 import Notes from "./Notes/Notes";
 import Note from "./Note/Note";
+
 import "./Home.css";
 
 function Home() {
