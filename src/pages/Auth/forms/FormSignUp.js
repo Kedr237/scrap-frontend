@@ -31,7 +31,7 @@ function FormSignUp() {
             setErrors({});
             setSuccessMessage("Registration successful.");
         } catch (error) {
-            if (error.response && error.response.data) {
+            if (error.response.data) {
                 setErrors(error.response.data);
                 setSuccessMessage("");
             } else {
