@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { SIGN_UP_URL } from "../../../core/config";
+import { SIGN_UP_URL } from "../../../helpers/config";
 
 import "./form.css";
 
-function FormSignUp() {
 
+function FormSignUp() {
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState("");
     const [fadeOut, setFadeOut] = useState(false);
@@ -21,6 +21,7 @@ function FormSignUp() {
         }
     }, [successMessage]);
 
+
     async function handleSignUp(event) {
         event.preventDefault();
         const form = event.target;
@@ -33,7 +34,7 @@ function FormSignUp() {
             setErrors({});
             setSuccessMessage("Registration successful.");
         } catch (error) {
-            if (error.response.data) {
+            if (error.response && error.response.data) {
                 setErrors(error.response.data);
                 setSuccessMessage("");
             } else {
@@ -41,6 +42,7 @@ function FormSignUp() {
             }
         }
     }
+
 
     return (
         <form className="FormSignUp Auth__form" method="POST" onSubmit={handleSignUp}>
@@ -94,5 +96,6 @@ function FormSignUp() {
         </form>
     );
 }
+
 
 export default FormSignUp;

@@ -20,3 +20,8 @@
     color: var(--accent-color);
     transition: all 0.2s linear;
 }
+
+.active-form-type {
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+}

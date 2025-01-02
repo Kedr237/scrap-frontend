@@ -1,32 +1,32 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-import { SIGN_UP_URL } from "../../../core/config";
+import useTokens from "../../../helpers/tokens";
 
 import "./form.css";
 
+
 function FormSignIn() {
-
     const [errors, setErrors] = useState({});
-
+    const { getTokens } = useTokens();
+    
     async function handleSignUp(event) {
         event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
         
         try {
-            const response = await axios.post(SIGN_UP_URL, formData);
-            console.log("Response:", response.data);
+            await getTokens(formData);
             form.reset();
             setErrors({});
         } catch (error) {
-            if (error.response.data) {
+            if (error.response && error.response.data) {
                 setErrors(error.response.data);
             } else {
                 console.error("Error:", error);
             }
         }
     }
+
 
     return (
         <form className="FormSignIn Auth__form" method="POST" onSubmit={handleSignUp}>
@@ -62,5 +62,6 @@ function FormSignIn() {
         </form>
     );
 }
+
 
 export default FormSignIn;
