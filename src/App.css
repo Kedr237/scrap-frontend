@@ -38,6 +38,7 @@ body,
 .border-parent {
     position: relative;
 }
+
 .border-child {
     --corner-size: 0.5rem;
     --border-size: 2px;
@@ -71,4 +72,37 @@ body,
 .border-parent:hover .border-child,
 .border-parent:active .border-child {
     opacity: 8;
+}
+
+
+.background-parent {
+    position: relative;
+}
+
+.background-child {
+    --corner-size: 0.5rem;
+    --padding-size: 2px;
+    clip-path: polygon(
+        var(--padding-size) var(--padding-size),
+        var(--padding-size) calc(100% - var(--padding-size)),
+        calc(100% - var(--padding-size)) calc(100% - var(--padding-size)),
+        calc(100% - var(--padding-size)) calc(var(--padding-size) + var(--corner-size)),
+        calc(100% - var(--padding-size) - var(--corner-size)) var(--padding-size)
+    );
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    background: var(--third-bg-color);
+    padding: 0.4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: all 0.1s linear;
+    z-index: -100;
+}
+.background-parent:hover .background-child,
+.background-parent:active .background-child {
+    background: var(--second-bg-color);
 }

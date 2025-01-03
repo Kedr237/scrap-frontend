@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import FormSignIn from "./forms/FormSignIn";
 import FormSignUp from "./forms/FormSignUp";
@@ -8,6 +8,20 @@ import "./Auth.css";
 
 function Auth() {
     const [activeForm, setActiveForm] = useState("FormSignIn")
+
+    const [successMessage, setSuccessMessage] = useState("");
+    const [fadeOut, setFadeOut] = useState(false);
+
+
+    useEffect(() => {
+        if (successMessage) {
+            const timer = setTimeout(() => {
+                setFadeOut(true);
+                setTimeout(() => setSuccessMessage(""), 500);
+            }, 10000);
+            return () => clearTimeout(timer);
+        }
+    }, [successMessage]);
 
 
     return (
@@ -29,7 +43,14 @@ function Auth() {
                 </ul>
 
                 {activeForm === "FormSignIn" && <FormSignIn />}
-                {activeForm === "FormSignUp" && <FormSignUp />}
+                {activeForm === "FormSignUp" && <FormSignUp setSuccessMessage={setSuccessMessage} setActiveForm={setActiveForm} />}
+
+                {
+                    successMessage &&
+                    <div className={`Auth__success-message ${fadeOut ? "fade-out" : ""}`}>
+                        {successMessage}
+                    </div>
+                }
 
             </div>
         </div>

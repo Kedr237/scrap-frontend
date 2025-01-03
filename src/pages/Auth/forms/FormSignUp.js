@@ -1,25 +1,13 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { SIGN_UP_URL } from "../../../helpers/config";
 
 import "./form.css";
 
 
-function FormSignUp() {
+function FormSignUp({ setSuccessMessage, setActiveForm }) {
     const [errors, setErrors] = useState({});
-    const [successMessage, setSuccessMessage] = useState("");
-    const [fadeOut, setFadeOut] = useState(false);
-
-    useEffect(() => {
-        if (successMessage) {
-            const timer = setTimeout(() => {
-                setFadeOut(true);
-                setTimeout(() => setSuccessMessage(""), 500);
-            }, 10000);
-            return () => clearTimeout(timer);
-        }
-    }, [successMessage]);
 
 
     async function handleSignUp(event) {
@@ -33,6 +21,7 @@ function FormSignUp() {
             form.reset();
             setErrors({});
             setSuccessMessage("Registration successful.");
+            setActiveForm("FormSignIn");
         } catch (error) {
             if (error.response && error.response.data) {
                 setErrors(error.response.data);
@@ -83,15 +72,11 @@ function FormSignUp() {
                 )}
             </div>
 
-            <div>
-                <button className="Auth__submit-btn" type="submit">Submit</button>
-            </div>
-
-            {successMessage &&
-                <div className={`Auth__success-message ${fadeOut ? "fade-out" : ""}`}>
-                    {successMessage}
-                </div>
-            }
+            <button className="Auth__submit-btn border-parent background-parent" type="submit">
+                    Submit
+                    <div className="border-child"></div>
+                    <div className="background-child"></div>
+            </button>
 
         </form>
     );

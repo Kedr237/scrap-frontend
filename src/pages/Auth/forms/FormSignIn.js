@@ -59,7 +59,11 @@ function FormSignIn() {
             </div>
 
             <div>
-                <button className="Auth__submit-btn" type="submit">Submit</button>
+                <button className="Auth__submit-btn border-parent background-parent" type="submit">
+                    Submit
+                    <div className="border-child"></div>
+                    <div className="background-child"></div>
+                </button>
             </div>
 
         </form>
