@@ -35,7 +35,7 @@ body,
 }
 
 
-.border-parent {
+/* .border-parent {
     position: relative;
 }
 .border-child {
@@ -47,6 +47,44 @@ body,
     border: 1px solid var(--accent-color);
     border-radius: 1.2rem;
     opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: all 0.1s linear;
+}
+.border-parent:hover .border-child,
+.border-parent:active .border-child {
+    opacity: 8;
+} */
+.border-parent {
+    position: relative;
+}
+.border-child {
+    --corner-size: 0.5rem;
+    --border-size: 2px;
+    clip-path: polygon(
+        0% 0%,
+        0% 100%,
+        var(--border-size) calc(100% - var(--border-size)),
+        var(--border-size) var(--border-size),
+        calc(100% - var(--corner-size) - var(--border-size)) var(--border-size),
+        calc(100% - var(--border-size)) calc(var(--corner-size) + var(--border-size)),
+        calc(100% - var(--border-size)) calc(100% - var(--border-size)),
+        var(--border-size) calc(100% - var(--border-size)),
+        0 100%,
+        100% 100%,
+        100% var(--corner-size),
+        calc(100% - var(--corner-size)) 0%
+    );
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    padding: 0.4rem;
+    opacity: 0.5;
+    /* border: 2px solid var(--accent-color); */
     position: absolute;
     top: 50%;
     left: 50%;
