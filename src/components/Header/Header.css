@@ -17,3 +17,7 @@
     color: var(--accent-color);
     transition: all 0.1s linear;
 }
+
+.Header__link_logout .border-child {
+    background: var(--main-text-color);
+}

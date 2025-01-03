@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useTokens from "../../../helpers/tokens";
 
@@ -8,6 +9,7 @@ import "./form.css";
 function FormSignIn() {
     const [errors, setErrors] = useState({});
     const { getTokens } = useTokens();
+    const navigate = useNavigate();
     
     async function handleSignUp(event) {
         event.preventDefault();
@@ -18,6 +20,7 @@ function FormSignIn() {
             await getTokens(formData);
             form.reset();
             setErrors({});
+            navigate("/");
         } catch (error) {
             if (error.response && error.response.data) {
                 setErrors(error.response.data);
