@@ -1,14 +1,14 @@
+import apiClient from "../../../api/apiClient";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import useTokens from "../../../helpers/tokens";
-
+import { useDispatch } from "react-redux";
+import { setAccessToken, setRefreshToken } from "../../../state/authSlice";
+import { SIGN_IN_URL } from "../../../helpers/config";
 import "./form.css";
-
 
 function FormSignIn() {
     const [errors, setErrors] = useState({});
-    const { getTokens } = useTokens();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     
     async function handleSignUp(event) {
@@ -17,7 +17,9 @@ function FormSignIn() {
         const formData = new FormData(form);
         
         try {
-            await getTokens(formData);
+            const response = await apiClient.post(SIGN_IN_URL, formData);
+            dispatch(setAccessToken(response.data.access));
+            dispatch(setRefreshToken(response.data.refresh));
             form.reset();
             setErrors({});
             navigate("/");
@@ -29,7 +31,6 @@ function FormSignIn() {
             }
         }
     }
-
 
     return (
         <form className="FormSignIn Auth__form" method="POST" onSubmit={handleSignUp}>
@@ -56,6 +57,11 @@ function FormSignIn() {
                         ))}
                     </ul>
                 )}
+                {errors.detail && (
+                    <ul className="Auth__error-messages">
+                        <li className="Auth_error-message">{errors.detail}</li>
+                    </ul>
+                )}
             </div>
 
             <div>
@@ -69,6 +75,5 @@ function FormSignIn() {
         </form>
     );
 }
-
 
 export default FormSignIn;

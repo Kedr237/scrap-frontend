@@ -1,14 +1,10 @@
-import axios from "axios";
+import apiClient from "../../../api/apiClient";
 import { useState } from "react";
-
 import { SIGN_UP_URL } from "../../../helpers/config";
-
 import "./form.css";
-
 
 function FormSignUp({ setSuccessMessage, setActiveForm }) {
     const [errors, setErrors] = useState({});
-
 
     async function handleSignUp(event) {
         event.preventDefault();
@@ -16,7 +12,7 @@ function FormSignUp({ setSuccessMessage, setActiveForm }) {
         const formData = new FormData(form);
         
         try {
-            const response = await axios.post(SIGN_UP_URL, formData);
+            const response = await apiClient.post(SIGN_UP_URL, formData);
             console.log("Response:", response.data);
             form.reset();
             setErrors({});
@@ -31,7 +27,6 @@ function FormSignUp({ setSuccessMessage, setActiveForm }) {
             }
         }
     }
-
 
     return (
         <form className="FormSignUp Auth__form" method="POST" onSubmit={handleSignUp}>
@@ -81,6 +76,5 @@ function FormSignUp({ setSuccessMessage, setActiveForm }) {
         </form>
     );
 }
-
 
 export default FormSignUp;

@@ -2,9 +2,9 @@ import Cookies from "js-cookie";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    accessToken: Cookies.get("accessToken") || "",
+    accessToken: "",
     refreshToken: Cookies.get("refreshToken") || "",
-}
+};
 
 const authSlice = createSlice({
     name: "auth",
@@ -12,21 +12,19 @@ const authSlice = createSlice({
     reducers: {
         setAccessToken: (state, action) => {
             state.accessToken = action.payload;
-            Cookies.set("accessToken", action.payload, { expires: 1/24, path: "" });
         },
         setRefreshToken: (state, action) => {
             state.refreshToken = action.payload;
             Cookies.set("refreshToken", action.payload, { expires: 15, path: "" });
         },
-        ClearTokens: (state) => {
+        clearTokens: (state) => {
             state.accessToken = "";
             state.refreshToken = "";
-            Cookies.remove("accessToken");
-            Cookies.remove("refreshToken");
+            Cookies.remove("refreshToken"); 
         },
     },
 });
 
-export const { setAccessToken, setRefreshToken, ClearTokens } = authSlice.actions;
+export const { setAccessToken, setRefreshToken, clearTokens } = authSlice.actions;
 
 export default authSlice.reducer;

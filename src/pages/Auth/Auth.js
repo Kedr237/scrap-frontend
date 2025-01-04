@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
-
 import FormSignIn from "./forms/FormSignIn";
 import FormSignUp from "./forms/FormSignUp";
-
 import "./Auth.css";
-
 
 function Auth() {
     const [activeForm, setActiveForm] = useState("FormSignIn")
 
     const [successMessage, setSuccessMessage] = useState("");
     const [fadeOut, setFadeOut] = useState(false);
-
 
     useEffect(() => {
         if (successMessage) {
@@ -22,7 +18,6 @@ function Auth() {
             return () => clearTimeout(timer);
         }
     }, [successMessage]);
-
 
     return (
         <div className="Auth">
@@ -56,6 +51,5 @@ function Auth() {
         </div>
     );
 }
-
 
 export default Auth;

@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ClearTokens } from "../../state/authSlice";
+import { clearTokens } from "../../state/authSlice";
 
 import { useNavigate } from "react-router-dom";
 
 import "./Header.css";
 
 function Header() {
-    const accessToken = useSelector((state) => state.auth.accessToken);
+    const refreshToken = useSelector((state) => state.auth.refreshToken);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ function Header() {
         event.preventDefault();
         const confirmed = window.confirm("Are you sure you want to logout?");
         if (confirmed) {
-            dispatch(ClearTokens());
+            dispatch(clearTokens());
             navigate("/auth");
         }
     };
@@ -29,7 +29,7 @@ function Header() {
                     </li>
                     <li>
                         {
-                            accessToken ? (
+                            refreshToken ? (
                                 <a href="auth" className="Header__link Header__link_logout border-parent"
                                 onClick={handleLogout}>
                                     Logout

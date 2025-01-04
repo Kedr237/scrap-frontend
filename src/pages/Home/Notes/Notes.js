@@ -1,6 +1,5 @@
 import "./Notes.css";
 
-
 function Notes() {
     return (
         <div className="Notes">
@@ -8,6 +7,5 @@ function Notes() {
         </div>
     );
 }
-
 
 export default Notes;
