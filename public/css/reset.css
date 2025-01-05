@@ -48,7 +48,8 @@ a {
 }
 input,
 input:hover,
-input:focus {
+input:focus,
+button {
 	background: none;
 	border: none;
 	outline: none;
