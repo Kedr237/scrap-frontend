@@ -8,26 +8,32 @@ import { refreshTokens } from "./actions/authActions";
 import "./App.css";
 
 function App() {
-  useEffect(() => {
-      refreshTokens();
-  }, []);
+    useEffect(() => {
+        const tokensRefreshed = sessionStorage.getItem("tokensRefreshed");
 
-  return (
-    <Router>
-      <div className="App">
-        <Header />
-        <main className="main">
+        if (!tokensRefreshed) {
+            refreshTokens().then(() => {
+                sessionStorage.setItem("tokensRefreshed", "true");
+            });
+        }
+    }, []);
 
-          <Routes>
-            <Route path="/" element={<Notes />} />
-            <Route path="auth" element={<Auth />} />
-          </Routes>
-          
-        </main>
-        <Footer />
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Header />
+                <main className="main">
+
+                <Routes>
+                    <Route path="/" element={<Notes />} />
+                    <Route path="auth" element={<Auth />} />
+                </Routes>
+                
+                </main>
+                <Footer />
+            </div>
+        </Router>
+    );
 }
 
 export default App;
