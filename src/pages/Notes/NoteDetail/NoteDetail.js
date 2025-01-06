@@ -1,8 +1,8 @@
-import "./Note.css";
+import "./NoteDetail.css";
 
-function Note() {
+function NoteDetail() {
     return (
-        <div className="Note">
+        <div className="NoteDetail">
             <div className="container">
                 This is Note
             </div>
@@ -10,4 +10,4 @@ function Note() {
     );
 }
 
-export default Note;
+export default NoteDetail;

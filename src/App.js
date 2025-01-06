@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Home from "./pages/Home/Home";
+import Notes from "./pages/Notes/Notes";
 import Auth from "./pages/Auth/Auth";
 import { refreshTokens } from "./actions/authActions";
 import "./App.css";
@@ -19,7 +19,7 @@ function App() {
         <main className="main">
 
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Notes />} />
             <Route path="auth" element={<Auth />} />
           </Routes>
           

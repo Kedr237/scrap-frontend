@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { getBaseNotes } from "../../../actions/notesActions";
-import "./Notes.css";
+import "./NotesList.css";
 
-function Notes() {
+function NotesList() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ function Notes() {
     };
 
     return (
-        <div className="Notes">
+        <div className="NotesList">
             <button onClick={() => handleGetNotes()}>Get notes</button>
             <br />
             <br />
@@ -29,4 +29,4 @@ function Notes() {
     );
 }
 
-export default Notes;
+export default NotesList;
