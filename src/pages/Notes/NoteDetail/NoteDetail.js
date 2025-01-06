@@ -8,6 +8,6 @@ function NoteDetail() {
             </div>
         </div>
     );
-}
+};
 
 export default NoteDetail;

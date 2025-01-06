@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Notes from "./pages/Notes/Notes";
@@ -8,15 +9,19 @@ import { refreshTokens } from "./actions/authActions";
 import "./App.css";
 
 function App() {
-    useEffect(() => {
-        const tokensRefreshed = sessionStorage.getItem("tokensRefreshed");
+    const authenticated = useSelector((state) => state.auth.authenticated);
+    const [loading, setLoading] = useState(true);
 
-        if (!tokensRefreshed) {
-            refreshTokens().then(() => {
-                sessionStorage.setItem("tokensRefreshed", "true");
-            });
+    useEffect(() => {
+        async function handleStart() {
+            if (authenticated === false) {
+                await refreshTokens();
+            }
+            setLoading(false);
         }
-    }, []);
+
+        handleStart();
+    }, [authenticated]);
 
     return (
         <Router>
@@ -24,10 +29,16 @@ function App() {
                 <Header />
                 <main className="main">
 
-                <Routes>
-                    <Route path="/" element={<Notes />} />
-                    <Route path="auth" element={<Auth />} />
-                </Routes>
+                    {!loading && 
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={authenticated ? <Notes /> : <Navigate to="/auth" />} />
+                            <Route
+                                path="/auth"
+                                element={!authenticated ? <Auth /> : <Navigate to="/" />} />
+                        </Routes>
+                    }
                 
                 </main>
                 <Footer />

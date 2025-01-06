@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     accessToken: sessionStorage.getItem("accessToken"),
     refreshToken: Cookies.get("refreshToken") || "",
-    tokensRefreshed: sessionStorage.getItem("accessToken") ? "true" : "false",
+    authenticated: sessionStorage.getItem("accessToken") ? true : false,
 };
 
 const authSlice = createSlice({
@@ -14,16 +14,16 @@ const authSlice = createSlice({
         setAccessToken: (state, action) => {
             state.accessToken = action.payload;
             sessionStorage.setItem("accessToken", action.payload);
+            state.authenticated = true;
         },
         setRefreshToken: (state, action) => {
             state.refreshToken = action.payload;
-            state.tokensRefreshed = "true";
             Cookies.set("refreshToken", action.payload, { expires: 15, path: "" });
         },
         clearTokens: (state) => {
             state.accessToken = "";
             state.refreshToken = "";
-            state.tokensRefreshed = "false";
+            state.authenticated = false;
             Cookies.remove("refreshToken"); 
             sessionStorage.removeItem("accessToken");
         },

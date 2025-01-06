@@ -7,6 +7,14 @@ export async function getBaseNotes(parent="null") {
         return response.data;
     } catch (error) {
         console.error("Error receiving notes.");
-        return [];
     }
 };
+
+export async function getNoteDetail(id) {
+    try {
+        const response = await apiClient.get(`${NOTES_URL}?id=${id}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error receiving note detail.");
+    }
+}
