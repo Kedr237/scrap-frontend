@@ -6,18 +6,20 @@ import "./NotesList.css";
 function NotesList() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const refreshToken = useSelector((state) => state.auth.refreshToken);
+    const tokensRefreshed = useSelector((state) => state.auth.tokensRefreshed);
 
-    // useEffect(() => {
-    //     async function fetchNotes() {
-    //         setLoading(true);
-    //         const notesData = await getBaseNotes();
-    //         setNotes(notesData);
-    //         setLoading(false); 
-    //     };
+    useEffect(() => {
+        async function fetchNotes() {
+            if (tokensRefreshed === "true") {
+                setLoading(true);
+                const notesData = await getBaseNotes();
+                setNotes(notesData);
+                setLoading(false); 
+            } 
+        };
 
-    //     fetchNotes();
-    // }, [refreshToken]);
+        fetchNotes();
+    }, [tokensRefreshed]);
 
     return (
         <div className="NotesList">

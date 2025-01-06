@@ -20,7 +20,7 @@ export async function refreshTokens() {
     } catch (error) {
         console.error("Error refreshing tokens.")
         store.dispatch(clearTokens());
-        window.location.href = "/auth";
+        // window.location.href = "/auth";
         return Promise.reject(error);
     }
 };

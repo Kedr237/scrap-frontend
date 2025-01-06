@@ -7,5 +7,6 @@ export async function getBaseNotes(parent="null") {
         return response.data;
     } catch (error) {
         console.error("Error receiving notes.");
+        return [];
     }
 };
