@@ -13,7 +13,7 @@ export async function getBaseNotes(parent="null") {
 
 export async function getNoteDetail(id) {
     try {
-        const response = await apiClient.get(`${NOTES_URL}?id=${id}`);
+        const response = await apiClient.get(`${NOTES_URL}${id}/`);
         return response.data;
     } catch (error) {
         console.error("Error receiving note detail.");

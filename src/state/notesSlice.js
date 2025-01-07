@@ -19,9 +19,9 @@ function setNoteIdInUrl(noteId) {
 const initialState = {
     noteId: getNoteIdFromUrl(),
     noteDetail: {
-        id: sessionStorage.getItem("noteId"),
+        id: parseInt(sessionStorage.getItem("noteId")),
         title: sessionStorage.getItem("noteTitle"),
-        content: sessionStorage.getItem("noteContent"),
+        content: sessionStorage.getItem("noteContent") === "null" ? null : sessionStorage.getItem("noteContent"),
     },
 };
 

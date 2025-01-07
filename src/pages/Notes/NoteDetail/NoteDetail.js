@@ -14,7 +14,7 @@ function NoteDetail() {
             if (noteId && noteId != noteDetail.id) {
                 try {
                     const newNoteDetail = await getNoteDetail(noteId);
-                    dispatch(setNoteDetail(newNoteDetail[0]))
+                    dispatch(setNoteDetail(newNoteDetail))
                 } catch (error) {}
             }
         };
