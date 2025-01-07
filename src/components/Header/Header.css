@@ -2,7 +2,7 @@
     background-color: var(--second-bg-color);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid color-mix(in srgb, var(--main-text-color) 20%, transparent);
+    border-bottom: 1px solid var(--main-color-transparent);
 }
 
 .Header__list {
@@ -19,5 +19,9 @@
 }
 
 .Header__link_logout .border-child {
+    background: var(--main-color-transparent);
+    opacity: 1;
+}
+.Header__link_logout:hover .border-child {
     background: var(--main-text-color);
 }

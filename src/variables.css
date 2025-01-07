@@ -7,6 +7,8 @@
     --accent-color: #ff3939;
     --second-accent-color: #16ff6f;
 
+    --main-color-transparent: color-mix(in srgb, var(--main-text-color) 20%, transparent);
+
     --screen-size-desktop: 1200px;
     --screen-size-laptop: 992px;
     --screen-size-tablet: 768px;

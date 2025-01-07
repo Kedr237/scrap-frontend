@@ -71,7 +71,7 @@ body,
 }
 .border-parent:hover .border-child,
 .border-parent:active .border-child {
-    opacity: 8;
+    opacity: 1;
 }
 
 

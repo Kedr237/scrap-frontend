@@ -25,3 +25,11 @@
     text-decoration: underline;
     text-decoration-color: var(--accent-color);
 }
+
+.Auth__signUp .border-child {
+    background: var(--main-color-transparent);
+    opacity: 1;
+}
+.Auth__signUp:hover .border-child {
+    background: var(--main-text-color);
+}

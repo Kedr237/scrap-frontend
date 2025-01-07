@@ -5,7 +5,7 @@
     flex: 0 0 auto;
     padding: 1rem;
     background: var(--third-bg-color);
-    border-right: 1px solid color-mix(in srgb, var(--main-text-color) 20%, transparent);
+    border-right: 1px solid var(--main-color-transparent);
 }
 
 .NotesList__container {
@@ -63,5 +63,10 @@
     cursor: pointer;
 }
 .NotesList__plus path {
-    fill: color-mix(in srgb, var(--main-text-color) 20%, transparent);
+    fill: var(--main-color-transparent);
+    transition: all 0.1s linear;
+}
+
+.NotesList__plus:hover path {
+    fill: var(--main-text-color);
 }
