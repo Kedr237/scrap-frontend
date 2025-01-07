@@ -1,6 +1,5 @@
 import axios from "axios";
 import store from "../state/store";
-import { clearTokens } from "../state/authSlice";
 import { BACKEND_API } from "../helpers/config";
 import { refreshTokens } from "../actions/authActions";
 

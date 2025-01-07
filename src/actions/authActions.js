@@ -1,7 +1,7 @@
 import apiClient from "../api/apiClient";
 import { setAccessToken, setRefreshToken, clearTokens } from "../state/authSlice";
 import store from "../state/store";
-import { REFRESH_URL } from "../helpers/config";
+import { REFRESH_URL, USER_DETAIL_URL } from "../helpers/config";
 import { AUTH_PATH } from "../helpers/paths";
 
 export async function refreshTokens() {
@@ -21,7 +21,16 @@ export async function refreshTokens() {
     } catch (error) {
         console.error("Error refreshing tokens.")
         store.dispatch(clearTokens());
-        window.location.href = AUTH_PATH;
+        // window.location.href = AUTH_PATH;
         return Promise.reject(error);
     }
 };
+
+export async function getUserDetail() {
+    try {
+        const response = await apiClient.get(USER_DETAIL_URL);
+        return response.data;
+    } catch (error) {
+        console.error("Error receiving user detail")
+    }
+}

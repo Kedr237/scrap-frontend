@@ -1,5 +1,6 @@
 .NotesList {
     --width-mark: 0.2rem;
+    --mark-offset: 0.2rem;
     width: 16rem;
     height: 100%;
     flex: 0 0 auto;
@@ -13,6 +14,37 @@
     width: 100%;
 }
 
+
+.NotesList__top {
+    position: relative;
+    width: 100%;
+    padding-left: calc(var(--width-mark) + var(--mark-offset));
+}
+
+.NotesList__username {
+    font-weight: 600;
+    max-width: 60%;
+}
+
+.NotesList__plus {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+.NotesList__plus path {
+    fill: var(--main-color-transparent);
+    transition: all 0.1s linear;
+}
+
+.NotesList__plus:hover path {
+    fill: var(--main-text-color);
+}
+
+
 .NotesList__list {
     width: 100%;
     padding-top: 2rem;
@@ -22,21 +54,8 @@
 }
 
 .NotesList__item {
-    position: relative;
-    padding-left: calc(var(--width-mark) + 0.2rem);
-    overflow: hidden;
-    white-space: nowrap;
+    padding-left: calc(var(--width-mark) + var(--mark-offset));
     cursor: pointer;
-}
-.NotesList__item::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 3rem;
-    background: linear-gradient(to right, transparent, var(--third-bg-color));
-    pointer-events: none;
 }
 .NotesList__item::before {
     content: "";
@@ -52,21 +71,4 @@
 .NotesList__item:hover.NotesList__item::before,
 .NotesList__item:active.NotesList__item::before {
     height: 100%;
-}
-
-.NotesList__plus {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: auto;
-    cursor: pointer;
-}
-.NotesList__plus path {
-    fill: var(--main-color-transparent);
-    transition: all 0.1s linear;
-}
-
-.NotesList__plus:hover path {
-    fill: var(--main-text-color);
 }

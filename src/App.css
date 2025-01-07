@@ -106,3 +106,20 @@ body,
 .background-parent:active .background-child {
     background: var(--second-bg-color);
 }
+
+
+.text-shadow {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.text-shadow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 3rem;
+    background: linear-gradient(to right, transparent, var(--third-bg-color));
+    pointer-events: none;
+}

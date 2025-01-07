@@ -10,3 +10,5 @@ export const SIGN_IN_URL = `/token/`;
 export const REFRESH_URL = `/token/refresh/`;
 
 export const NOTES_URL = `${API_VERSION}/notes/`
+
+export const USER_DETAIL_URL = `${BACKEND_API}/user/`
