@@ -3,27 +3,31 @@
     width: 16rem;
     height: 100%;
     flex: 0 0 auto;
-    padding: 1rem calc(var(--width-mark) + 1.5rem);
+    padding: 1rem;
     background: var(--third-bg-color);
     border-right: 1px solid color-mix(in srgb, var(--main-text-color) 20%, transparent);
 }
 
+.NotesList__container {
+    position: relative;
+    width: 100%;
+}
+
 .NotesList__list {
     width: 100%;
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .NotesList__item {
-    
     position: relative;
     padding-left: calc(var(--width-mark) + 0.2rem);
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer;
 }
-
 .NotesList__item::after {
     content: "";
     position: absolute;
@@ -34,7 +38,6 @@
     background: linear-gradient(to right, transparent, var(--third-bg-color));
     pointer-events: none;
 }
-
 .NotesList__item::before {
     content: "";
     position: absolute;
@@ -49,4 +52,16 @@
 .NotesList__item:hover.NotesList__item::before,
 .NotesList__item:active.NotesList__item::before {
     height: 100%;
+}
+
+.NotesList__plus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+.NotesList__plus path {
+    fill: color-mix(in srgb, var(--main-text-color) 20%, transparent);
 }

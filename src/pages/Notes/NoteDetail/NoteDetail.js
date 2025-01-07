@@ -5,23 +5,22 @@ import { setNoteDetail } from "../../../state/notesSlice";
 import { getNoteDetail } from "../../../actions/notesActions";
 
 function NoteDetail() {
-    const newId = useSelector((state) => state.notes.newId);
+    const noteId = useSelector((state) => state.notes.noteId);
     const noteDetail = useSelector((state) => state.notes.noteDetail)
     const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetchNoteDetail() {
-            if (newId && newId != noteDetail.id) {
+            if (noteId && noteId != noteDetail.id) {
                 try {
-                    const newNoteDetail = await getNoteDetail(newId);
-                    console.log(newNoteDetail[0])
+                    const newNoteDetail = await getNoteDetail(noteId);
                     dispatch(setNoteDetail(newNoteDetail[0]))
                 } catch (error) {}
             }
         };
 
         fetchNoteDetail();
-    }, [newId]);
+    }, [noteId]);
 
     return (
         <div className="NoteDetail">

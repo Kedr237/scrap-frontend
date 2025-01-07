@@ -1,7 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function getNoteIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("noteId");
+};
+
+function setNoteIdInUrl(noteId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (noteId) {
+        urlParams.set("noteId", noteId);
+    } else {
+        urlParams.delete("noteId");
+    }
+    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, "", newUrl);
+}
+
 const initialState = {
-    newId: sessionStorage.getItem("newNoteId"),
+    noteId: getNoteIdFromUrl(),
     noteDetail: {
         id: sessionStorage.getItem("noteId"),
         title: sessionStorage.getItem("noteTitle"),
@@ -13,9 +29,9 @@ const notesSlice = createSlice({
     name: "notes",
     initialState,
     reducers: {
-        setNewId: (state, action) => {
-            state.newId = action.payload;
-            sessionStorage.setItem("newNoteId", action.payload);
+        setNoteId: (state, action) => {
+            state.noteId = action.payload;
+            setNoteIdInUrl(action.payload);
         },
         setNoteDetail: (state, action) => {
             const { id, title, content } = action.payload;
@@ -27,6 +43,6 @@ const notesSlice = createSlice({
     },
 });
 
-export const { setNewId, setNoteDetail } = notesSlice.actions;
+export const { setNoteId, setNoteDetail } = notesSlice.actions;
 
 export default notesSlice.reducer;
