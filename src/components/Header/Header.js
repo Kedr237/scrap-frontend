@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearTokens } from "../../state/authSlice";
-
 import { useNavigate } from "react-router-dom";
-
+import { AUTH_PATH, NOTE_PATH } from "../../helpers/paths";
 import "./Header.css";
 
 function Header() {
@@ -15,7 +14,7 @@ function Header() {
         const confirmed = window.confirm("Are you sure you want to logout?");
         if (confirmed) {
             dispatch(clearTokens());
-            navigate("/auth");
+            navigate(AUTH_PATH);
         }
     };
 
@@ -25,7 +24,7 @@ function Header() {
             <div className="container">
                 <ul className="Header__list">
                     <li>
-                        <a href="/" className="Header__link">Notes</a>
+                        <a href={NOTE_PATH} className="Header__link">Notes</a>
                     </li>
                     <li>
                         {

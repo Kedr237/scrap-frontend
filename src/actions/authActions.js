@@ -2,6 +2,7 @@ import apiClient from "../api/apiClient";
 import { setAccessToken, setRefreshToken, clearTokens } from "../state/authSlice";
 import store from "../state/store";
 import { REFRESH_URL } from "../helpers/config";
+import { AUTH_PATH } from "../helpers/paths";
 
 export async function refreshTokens() {
     const { refreshToken } = store.getState().auth;
@@ -20,7 +21,7 @@ export async function refreshTokens() {
     } catch (error) {
         console.error("Error refreshing tokens.")
         store.dispatch(clearTokens());
-        window.location.href = "/auth";
+        window.location.href = AUTH_PATH;
         return Promise.reject(error);
     }
 };

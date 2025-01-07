@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAccessToken, setRefreshToken } from "../../../state/authSlice";
 import { SIGN_IN_URL } from "../../../helpers/config";
+import { NOTE_PATH } from "../../../helpers/paths";
 import "./form.css";
 
 function FormSignIn() {
@@ -22,7 +23,7 @@ function FormSignIn() {
             dispatch(setRefreshToken(response.data.refresh));
             form.reset();
             setErrors({});
-            navigate("/");
+            navigate(NOTE_PATH);
         } catch (error) {
             if (error.response && error.response.data) {
                 setErrors(error.response.data);

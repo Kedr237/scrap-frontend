@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setNoteId } from "../../../state/notesSlice";
-import { getBaseNotes } from "../../../actions/notesActions";
+import { createNote, getBaseNotes } from "../../../actions/notesActions";
 import "./NotesList.css";
 
 function NotesList() {
@@ -21,7 +21,11 @@ function NotesList() {
     return (
         <div className="NotesList">
             <div className="NotesList__container">
-                <svg className="NotesList__plus" viewBox="0 0 24 24" fill="none">
+                <svg
+                    className="NotesList__plus"
+                    viewBox="0 0 24 24" fill="none"
+                    onClick={createNote}
+                >
                     <path fillRule="evenodd" clipRule="evenodd" d="M2 2H22V22H2V2ZM11.25 18V12.75H6V11.25H11.25V6H12.75V11.25H18V12.75H12.75V18H11.25Z" fill="#000000"/>
                 </svg>
 

@@ -1,5 +1,6 @@
 import apiClient from "../api/apiClient";
 import { NOTES_URL } from "../helpers/config";
+import { NOTE_PATH } from "../helpers/paths";
 
 export async function getBaseNotes(parent="null") {
     try {
@@ -18,3 +19,16 @@ export async function getNoteDetail(id) {
         console.error("Error receiving note detail.");
     }
 }
+
+export async function createNote() {
+    const note = {
+        title: "Undefined",
+    }
+
+    try {
+        const response = await apiClient.post(`${NOTES_URL}`, note);
+        window.location.href = `${NOTE_PATH}?noteId=${response.data.id}`;
+    } catch (error) {
+        console.log("Error creating note.")
+    }
+};
