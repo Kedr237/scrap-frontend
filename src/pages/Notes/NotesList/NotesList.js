@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setNoteId } from "../../../state/notesSlice";
+import { setNewId } from "../../../state/notesSlice";
 import { getBaseNotes } from "../../../actions/notesActions";
 import "./NotesList.css";
 
@@ -26,7 +26,7 @@ function NotesList() {
                         <li
                             className="NotesList__item"
                             key={index}
-                            onClick={() => dispatch(setNoteId(note.id))}
+                            onClick={() => dispatch(setNewId(note.id))}
                         >{note.title}</li>
                     ))}
                 </ul>

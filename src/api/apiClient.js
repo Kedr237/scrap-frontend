@@ -1,7 +1,7 @@
 import axios from "axios";
-import { setAccessToken, setRefreshToken, clearTokens } from "../state/authSlice";
 import store from "../state/store";
-import { BACKEND_API, REFRESH_URL } from "../helpers/config";
+import { clearTokens } from "../state/authSlice";
+import { BACKEND_API } from "../helpers/config";
 import { refreshTokens } from "../actions/authActions";
 
 const apiClient = axios.create({

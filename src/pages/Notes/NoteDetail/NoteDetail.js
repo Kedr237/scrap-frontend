@@ -1,29 +1,34 @@
 import "./NoteDetail.css";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setNoteDetail } from "../../../state/notesSlice";
 import { getNoteDetail } from "../../../actions/notesActions";
 
 function NoteDetail() {
-    const noteId = useSelector((state) => state.notes.noteId);
-    const [noteTitle, setNoteTitle] = useState("");
-    const [noteContent, setNoteContent] = useState("");
+    const newId = useSelector((state) => state.notes.newId);
+    const noteDetail = useSelector((state) => state.notes.noteDetail)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetchNoteDetail() {
-            const noteDetail = await getNoteDetail(noteId);
-            setNoteTitle(noteDetail[0].title);
-            setNoteContent(noteDetail[0].content);
+            if (newId && newId != noteDetail.id) {
+                try {
+                    const newNoteDetail = await getNoteDetail(newId);
+                    console.log(newNoteDetail[0])
+                    dispatch(setNoteDetail(newNoteDetail[0]))
+                } catch (error) {}
+            }
         };
 
         fetchNoteDetail();
-    }, [noteId]);
+    }, [newId]);
 
     return (
         <div className="NoteDetail">
             <div className="container">
                 <div className="NoteDetail__inner">
-                    <h2 className="NoteDetail__title">{noteTitle}</h2>
-                    <p className="NoteDetail__content">{noteContent}</p>
+                    <h2 className="NoteDetail__title">{noteDetail.title}</h2>
+                    <p className="NoteDetail__content">{noteDetail.content}</p>
                 </div>
             </div>
         </div>
