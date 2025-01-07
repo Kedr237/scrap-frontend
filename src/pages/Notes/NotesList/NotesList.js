@@ -1,25 +1,18 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { getBaseNotes, getNoteDetail } from "../../../actions/notesActions";
+import { useSelector, useDispatch } from "react-redux";
+import { setNoteId } from "../../../state/notesSlice";
+import { getBaseNotes } from "../../../actions/notesActions";
 import "./NotesList.css";
 
 function NotesList() {
     const [notes, setNotes] = useState([]);
-    const [loading, setLoading] = useState(false);
     const authenticated = useSelector((state) => state.auth.authenticated);
-
-    async function fetchNoteDetail(id) {
-        const noteDetail = await getNoteDetail(id);
-    };
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetchNotes() {
-            if (authenticated === true) {
-                setLoading(true);
-                const notesData = await getBaseNotes();
-                setNotes(notesData);
-                setLoading(false); 
-            } 
+            const notesData = await getBaseNotes();
+            setNotes(notesData);
         };
 
         fetchNotes();
@@ -27,10 +20,14 @@ function NotesList() {
 
     return (
         <div className="NotesList">
-            {!loading && notes &&
-                <ul>
+            {notes &&
+                <ul className="NotesList__list">
                     {notes.map((note, index) => (
-                        <li key={index} onClick={() => fetchNoteDetail(note.id)}>{note.title}</li>
+                        <li
+                            className="NotesList__item"
+                            key={index}
+                            onClick={() => dispatch(setNoteId(note.id))}
+                        >{note.title}</li>
                     ))}
                 </ul>
             }

@@ -1,7 +1,49 @@
 .NotesList {
+    --width-mark: 0.2rem;
     width: 20rem;
     height: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem calc(var(--width-mark) + 1.5rem);
     background: var(--third-bg-color);
     border-right: 1px solid color-mix(in srgb, var(--main-text-color) 20%, transparent);
+}
+
+.NotesList__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.NotesList__item {
+    position: relative;
+    padding-left: calc(var(--width-mark) + 0.2rem);
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.NotesList__item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 3rem;
+    background: linear-gradient(to right, transparent, var(--third-bg-color));
+    pointer-events: none;
+}
+
+.NotesList__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: var(--width-mark);
+    background: var(--accent-color);
+    pointer-events: none;
+    transition: all 0.1s linear;
+}
+.NotesList__item:hover.NotesList__item::before,
+.NotesList__item:active.NotesList__item::before {
+    height: 100%;
 }

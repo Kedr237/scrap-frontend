@@ -2,3 +2,19 @@
     width: 100%;
     height: 100%;
 }
+
+.NoteDetail * {
+    white-space: pre-wrap;
+}
+
+.NoteDetail__inner {
+
+}
+
+.NoteDetail__title {
+    font-size: 1.2rem;
+}
+
+.NoteDetail__content {
+    margin-top: 2rem;
+}
